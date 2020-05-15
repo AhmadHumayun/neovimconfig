@@ -198,5 +198,6 @@ set splitright
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set nofen
 colorscheme codedark
 "============================================
