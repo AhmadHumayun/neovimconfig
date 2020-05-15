@@ -34,10 +34,14 @@ set ignorecase " Ignore case when performing search
 
 "======ESSENTIAL KEY BINDINGS================
 inoremap jk <ESC>
-inoremap JK <ESC>
 tnoremap jk <C-\><C-n>
-tnoremap JK <C-\><C-n>
-nmap ; $
+nnoremap " ea"<ESC>bi"<ESC>e
+nnoremap <SPACE>[ ea]<ESC>bi[<ESC>e
+nnoremap <SPACE>] ea]<ESC>bi[<ESC>e
+nnoremap <SPACE>( ea)<ESC>bi(<ESC>e
+nnoremap <SPACE>) ea)<ESC>bi(<ESC>e
+nnoremap <SPACE>{ ea}<ESC>bi{<ESC>e
+nnoremap <SPACE>} ea}<ESC>bi{<ESC>e
 noremap <F3> :w<RETURN>
 inoremap <F3> <ESC>:w<RETURN>
 noremap <TAB> :tabnext<RETURN>
@@ -49,7 +53,7 @@ nnoremap <SPACE>j <C-w><DOWN>
 nnoremap <SPACE>k <C-w><UP>
 nnoremap <SPACE>l <C-w><RIGHT>
 nnoremap <SPACE>p :CtrlP<RETURN>
-nnoremap <SPACE>t :let $VIM_DIR=expand('%:p:h')<CR>:split<CR>:terminal<CR>:resize 10<CR>cd $VIM_DIR<CR>
+nnoremap <SPACE>t :let $VIM_DIR=expand('%:p:h')<CR>:10split<CR>:terminal<CR>
 nnoremap <SPACE>r :let $VIM_DIR=expand('%:p:h')<CR>:vsplit<CR>:terminal<CR>cd $VIM_DIR<CR>
 noremap <Leader>ga :Gwrite<CR>
 noremap <Leader>gc :Gcommit<CR>
@@ -59,6 +63,10 @@ noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gb :Gblame<CR>
 noremap <Leader>gd :Gvdiff<CR>
 noremap <Leader>gr :Gremove<CR>
+nnoremap ; $
+nnoremap d; d$
+nnoremap y; y$
+nnoremap c; c$
 "============================================
 
 
