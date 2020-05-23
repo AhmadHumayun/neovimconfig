@@ -2,6 +2,7 @@
 ## Helpful keybindings
 Modes | Combination | Action
 ------------ | ------------ | -------------
+insert | <kbd>j</kbd> <kbd>k</kbd> | Enter normal mode
 normal | <kbd>SPC</kbd> <kbd>o</kbd> | Toggle NERDTREE file explorer
 normal | <kbd>SPC</kbd> <kbd>t</kbd> | Opens terminal at the bottom in current working directory
 normal | <kbd>SPC</kbd> <kbd>r</kbd> | Opens terminal at the right in current working directory
