@@ -18,6 +18,6 @@ normal, insert | <kbd>Alt</kbd> + (<kbd>j</kbd> or <kbd>k</kbd>)  | Drag line do
 normal | <kbd>,</kbd> <kbd>g</kbd> <kbd>a</kbd> | git add (Stage changes for commit)
 normal | <kbd>,</kbd> <kbd>g</kbd> <kbd>d</kbd> | git diff (See unstaged changes)
 normal | <kbd>,</kbd> <kbd>g</kbd> <kbd>b</kbd> | git blame (See who changed what)
-normal | <kbd>,</kbd> <kbd>g</kbd> <kbd>c</kbd> | git commit (Commit added changed)
+normal | <kbd>,</kbd> <kbd>g</kbd> <kbd>c</kbd> | git commit (Commit added changes)
 normal | <kbd>,</kbd> <kbd>g</kbd> <kbd>s</kbd> <kbd>h</kbd> | git push (Push committed changes)
 normal | <kbd>,</kbd> <kbd>g</kbd> <kbd>l</kbd> <kbd>l</kbd> | git pull (Pull changes from upstream branch)
