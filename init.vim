@@ -135,7 +135,10 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'posva/vim-vue'
 Plug 'leafOfTree/vim-vue-plugin'
 
-
+" dart
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/vim-lsc'
+"Plug 'natebosch/vim-lsc-dart'
 
 "*****************************************************************************
 "*****************************************************************************
@@ -286,16 +289,13 @@ let g:NERDTreeWinSize = 50
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
+autocmd BufEnter * silent! lcd %:p:h
 
 " grep.vim
 nnoremap <silent> <leader>f :Rgrep<CR>
 let Grep_Default_Options = '-IR'
 let Grep_Skip_Files = '*.log *.db'
 let Grep_Skip_Dirs = '.git node_modules'
-
-" terminal emulation
-nnoremap <silent> <leader>sh :terminal<CR>
-
 
 "*****************************************************************************
 "" Commands
@@ -539,7 +539,7 @@ let g:javascript_enable_domhtmlcss = 1
 " vim-javascript
 augroup vimrc-javascript
     autocmd!
-    autocmd FileType javascript setl tabstop=4|setl shiftwidth=4|setl expandtab softtabstop=4
+    autocmd FileType javascript setl tabstop=2|setl shiftwidth=2|setl expandtab softtabstop=2
 augroup END
 
 
@@ -662,8 +662,8 @@ let g:python3_host_prog = '/usr/bin/python3.6' " Make healthcheck warnings shut 
 "
 
 "======ESSENTIAL KEY BINDINGS================
-inoremap jk <ESC>
-tnoremap jk <C-\><C-n>
+inoremap <silent> jk <ESC>
+tnoremap <silent> jk <C-\><C-n>
 nnoremap <silent> " ea"<ESC>bi"<ESC>e
 nnoremap <silent> ' ea'<ESC>bi'<ESC>e
 nnoremap <silent> <SPACE>[ ea]<ESC>bi[<ESC>e
@@ -672,12 +672,12 @@ nnoremap <silent> <SPACE>( ea)<ESC>bi(<ESC>e
 nnoremap <silent> <SPACE>) ea)<ESC>bi(<ESC>e
 nnoremap <silent> <SPACE>{ ea}<ESC>bi{<ESC>e
 nnoremap <silent> <SPACE>} ea}<ESC>bi{<ESC>e
-noremap <F3> :w<RETURN>
-inoremap <F3> <ESC>:w<RETURN>
-noremap <TAB> :tabnext<RETURN>
-noremap <S-TAB> :tabNext<RETURN>
-nnoremap <SPACE>o :NERDTreeToggle<RETURN>
-noremap <SPACE>q :q<RETURN>
+noremap <silent> <F3> :w<RETURN>
+inoremap <silent> <F3> <ESC>:w<RETURN>
+noremap <silent> <TAB> :tabnext<RETURN>
+noremap <silent> <S-TAB> :tabNext<RETURN>
+nnoremap <silent> <SPACE>o :NERDTreeToggle<RETURN>
+noremap <silent> <SPACE>q :q<RETURN>
 nnoremap <silent> <SPACE>h <C-w><LEFT>
 nnoremap <silent> <SPACE>j <C-w><DOWN>
 nnoremap <silent> <SPACE>k <C-w><UP>
@@ -703,6 +703,7 @@ inoremap <silent> <A-j> <ESC>:m+<CR>a
 inoremap <silent> <A-k> <ESC>:m -2<CR>a
 xnoremap <silent> <A-j> :m'>+<CR>gv
 xnoremap <silent> <A-k> :m -2<CR>gv
+nnoremap <silent> <S-T> :tabnew<CR>
 
 "======PLUGIN CONFIGS===================================================
 "------------/coc-----------------------------------------------------------------------
@@ -718,6 +719,7 @@ let coc_global_extensions = [
             \ 'coc-clangd',
             \ 'coc-json',
             \ 'coc-python',
+            \ 'coc-flutter',
             \ ]
 set hidden 
 set updatetime=300
@@ -741,7 +743,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
 " Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " Or use `complete_info` if your vim support it, like:
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
@@ -776,6 +778,8 @@ augroup mygroup
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
+"------------/prettier-------------------------------------------------------------
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 "------------/ctrlp----------------------------------------------------------------
 " Ignore files that git ignores during search
 let g:ctrlp_user_command = [
